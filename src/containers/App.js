@@ -1,5 +1,5 @@
 import '../../src/App.css'
-import Header from '../components/Header';
+import StoreLocator from '../containers/StoreLocator';
 
 function App() {
   return (
@@ -7,14 +7,7 @@ function App() {
         <div>
           Hello world
         </div>
-        <Header/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React</a>
+        <StoreLocator/>
     </div>
   );
 }
