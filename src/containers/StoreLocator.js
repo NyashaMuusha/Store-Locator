@@ -1,27 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Button from "../components/Button";
 import Map from "../components/Map";
 import mapChooser from "../mapChooser";
+import axios from 'axios';
 
 const StoreLocator = () => {
   const [currentMap, setCurrentMap] = useState("none.png");
   const [location, setLocation] = useState("");
+  const [shops, setShops] = useState([]);
 
-  const shops = [
-    {
-      location: "Portland",
-      address: "123 Portland Dr",
-    },
-    {
-      location: "Astoria",
-      address: "123 Astoria Dr",
-    },
-    {
-      location: "",
-      address: "",
-    },
-  ];
+   useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get('http://localhost:3000/data/shops.json');
+        setShops(response.data.shops);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    fetchData();
+  }, []);
 
   const chooseMap = (location) => {
     setCurrentMap(mapChooser(location));

@@ -6,7 +6,6 @@ const Button = (props) => {
       className="location-button"
       data-location={props.location}
       onClick={() => {
-        console.log(props.location);
         props.handleClick(props.location);
       }}
     >
