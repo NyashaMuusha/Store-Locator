@@ -1,11 +1,18 @@
 import React from "react";
-import "../components/Map.css";
+import "./Map.css";
 
-const Map = () => {
+const Map = (props) => {
+  let imagePath;
+  if (props.imagename) {
+    imagePath = "images/" + props.imagename;
+  } else {
+    imagePath = "images/none.png";
+  }
   return (
     <div className="MapBox">
-      <img src="images/none.png" alt="No Store Selected" />
+      <img src={imagePath} alt={props.location} />
     </div>
   );
 };
+
 export default Map;
